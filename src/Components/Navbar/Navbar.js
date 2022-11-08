@@ -1,23 +1,31 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../Context/AuthProvider';
 
 const Navbar = () => {
+    const {user, logOut} = useContext(AuthContext)
+    const handleLogOut = () =>{
+        logOut()
+        .then()
+        .catch()
+    }
     const mentuItems = <>
-
+         
         <li className='font-semibold'><Link to='/'>Home</Link></li>
-        {/* {
+        {
             user?.email ? 
             <>
-            <li className='font-semibold'><Link to='/orders'>Orders</Link></li>
+            <li className='font-semibold'><Link to='/reviews'>My reviews</Link></li>
+            <li className='font-semibold'><Link to='/addservices'>Add service</Link></li>
             <li className='font-semibold'>
                 <button onClick={handleLogOut} className='btn-ghost'>Sign Out</button>
                 </li>
             </>
             :
             <li className='font-semibold'><Link to='/login'>Login</Link></li>
-        } */}
+        }
         <li className='font-semibold'><Link to='/'>Blog</Link></li>
-        <li className='font-semibold'><Link to='/'>login</Link></li>
+       
     </>
     return (
         <div className="navbar  h-20 mb-4  bg-base-100">
