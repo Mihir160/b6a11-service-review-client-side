@@ -24,7 +24,7 @@ const Navbar = () => {
             :
             <li className='font-semibold'><Link to='/login'>Login</Link></li>
         }
-        <li className='font-semibold'><Link to='/'>Blog</Link></li>
+        <li className='font-semibold'><Link to='/blog'>Blog</Link></li>
        
     </>
     return (

@@ -3,7 +3,7 @@ import ServiceCard from './ServiceCard';
 
 const ServiceAll = () => {
     const [services, setServices] = useState([])
-    console.log(services)
+    // console.log(services)
     useEffect(() => {
         fetch('http://localhost:5000/servicesAll')
             .then(res => res.json())

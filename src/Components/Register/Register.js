@@ -1,10 +1,10 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider';
 
 const Register = () => {
-    const {createUser} = useContext(AuthContext)
-
+    const { createUser } = useContext(AuthContext)
+    const [error, setError] = useState('')
     const handleSubmit = event => {
         event.preventDefault();
         const form = event.target;
@@ -15,14 +15,13 @@ const Register = () => {
         createUser(email, password)
             .then(result => {
                 const user = result.user
-             
                 form.reset();
-              
+                setError('')
             })
             .catch(error => {
                 console.error(error)
-         
-                form.reset()
+                setError(error.message)
+
             })
     }
     return (
@@ -117,6 +116,9 @@ const Register = () => {
                                         </button>
 
                                     </div>
+                                    <p className="text-xs text-red-600 sm:text-sm">
+                                        {error}
+                                    </p>
                                     <p className="text-xs text-gray-600 sm:text-sm">
                                         You have  account please <Link className='underline' to='/login'><span className='text-orange-600'>login</span></Link>
                                     </p>

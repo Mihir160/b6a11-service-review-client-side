@@ -1,10 +1,11 @@
 import { GoogleAuthProvider } from 'firebase/auth';
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider';
 
 const Login = () => {
-    const { login,googleSignIn } = useContext(AuthContext)
+    const { login, googleSignIn } = useContext(AuthContext)
+    const [error, setError] = useState('')
     const googlProvider = new GoogleAuthProvider()
     const navigate = useNavigate()
     const location = useLocation()
@@ -14,26 +15,28 @@ const Login = () => {
         const form = event.target;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(email,password)
+        console.log(email, password)
         login(email, password)
             .then(result => {
                 const user = result.user
                 form.reset()
-                navigate(from, {replace: true})
+                navigate(from, { replace: true })
+                setError('')
             })
             .catch(error => {
+                setError(error.message)
                 console.error(error)
             })
     }
-    const handleGoogleSignIn = () =>{
+    const handleGoogleSignIn = () => {
         googleSignIn(googlProvider)
-        .then(result =>{
-         const user = result.user
-        //  console.log(user)
-         navigate(from, {replace: true})
-        })
-        .catch(error => console.error(error))
- }
+            .then(result => {
+                const user = result.user
+                //  console.log(user)
+                navigate(from, { replace: true })
+            })
+            .catch(error => console.error(error))
+    }
     return (
         <div className="relative">
             <img
@@ -107,13 +110,16 @@ const Login = () => {
                                         >
                                             Login
                                         </button>
-                                        <button 
-                                            onClick={handleGoogleSignIn} 
+                                        <button
+                                            onClick={handleGoogleSignIn}
                                             type="submit"
                                             className="inline-flex mt-4 items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md  bg-gray-800 focus:shadow-outline focus:outline-none"
                                         >
                                             Google
                                         </button>
+                                        <p className="text-xs text-red-600 sm:text-sm">
+                                            {error}
+                                        </p>
                                     </div>
                                     <p className="text-xs text-gray-600 sm:text-sm">
                                         You have no account please <Link className='underline' to='/register'><span className='text-orange-600'>register</span></Link>
