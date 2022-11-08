@@ -9,7 +9,6 @@ const Main = () => {
         <div>
             <Navbar></Navbar>
             <Outlet></Outlet>
-            <Services></Services>
             <Footer></Footer>
         </div>
     );
