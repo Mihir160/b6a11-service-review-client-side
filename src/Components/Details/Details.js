@@ -13,15 +13,10 @@ const Details = () => {
 
             </div>
             <div>
-            {
-            user?.email ? 
-            <>
+           
             <Link to='/addReview'><button>Add review</button></Link>
            
-            </>
-            :
-            <p className='font-semibold'><Link to='/login'>Login</Link> <span><Link to='/register'>/ Register</Link></span> </p>
-        }
+           
             </div>
         </div>
     );

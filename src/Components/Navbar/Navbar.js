@@ -15,11 +15,11 @@ const Navbar = () => {
         {
             user?.email ? 
             <>
-            <li className='font-semibold'><Link to='/reviews'>My reviews</Link></li>
+            <li className='font-semibold'><Link to='/myreview'>My reviews</Link></li>
             <li className='font-semibold'><Link to='/addservices'>Add service</Link></li>
             <li className='font-semibold'>
                 <button onClick={handleLogOut} className='btn-ghost'>Sign Out</button>
-                </li>
+            </li>
             </>
             :
             <li className='font-semibold'><Link to='/login'>Login</Link></li>

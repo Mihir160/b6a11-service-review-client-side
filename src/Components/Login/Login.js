@@ -8,16 +8,20 @@ const Login = () => {
     const { login, googleSignIn } = useContext(AuthContext)
     const [error, setError] = useState('')
     useTitle('login')
+
     const googlProvider = new GoogleAuthProvider()
     const navigate = useNavigate()
     const location = useLocation()
+
     const from = location.state?.from?.pathname || '/';
+
     const handleLogin = event => {
         event.preventDefault();
         const form = event.target;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(email, password)
+        // console.log(email, password)
+
         login(email, password)
             .then(result => {
                 const user = result.user
@@ -30,6 +34,7 @@ const Login = () => {
                 console.error(error)
             })
     }
+    
     const handleGoogleSignIn = () => {
         googleSignIn(googlProvider)
             .then(result => {
