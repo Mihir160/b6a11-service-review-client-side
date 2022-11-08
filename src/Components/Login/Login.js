@@ -2,10 +2,12 @@ import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider';
-
+import { FaGoogle } from 'react-icons/fa';
+import useTitle from '../hooks/useTitle';
 const Login = () => {
     const { login, googleSignIn } = useContext(AuthContext)
     const [error, setError] = useState('')
+    useTitle('login')
     const googlProvider = new GoogleAuthProvider()
     const navigate = useNavigate()
     const location = useLocation()
@@ -115,7 +117,7 @@ const Login = () => {
                                             type="submit"
                                             className="inline-flex mt-4 items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md  bg-gray-800 focus:shadow-outline focus:outline-none"
                                         >
-                                            Google
+                                            Google <span className='mx-2'><FaGoogle></FaGoogle></span>
                                         </button>
                                         <p className="text-xs text-red-600 sm:text-sm">
                                             {error}
