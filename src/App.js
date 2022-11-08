@@ -1,10 +1,11 @@
 
+import { RouterProvider } from 'react-router-dom';
 import './App.css';
-
+import router from './Router/Routes'
 function App() {
   return (
-    <div >
-      <h1>Mihir roy</h1>
+    <div className='mx-auto max-w-screen-lg'>
+        <RouterProvider router={router}></RouterProvider>
     </div>
   );
 }
