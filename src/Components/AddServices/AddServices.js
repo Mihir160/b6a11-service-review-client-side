@@ -27,12 +27,21 @@ const AddServices = () => {
             body: JSON.stringify(addsevices)
         })
         .then(res => res.json()
-        .then(data => console.log(data)))
+        .then(data => {
+            console.log(data)
+            if(data.acknowledged){
+                alert('Add service placed successfully')
+                form.reset()
+            }
+        }))
         .catch(er => console.error(er))
 
     }
     return (
         <div>
+            <div className='text-center'>
+            <h1 className='text-2xl font-bold text-orange-600'>Add to Services</h1>
+            </div>
             <form onSubmit={handleAddServices}>
                 <div className="mb-1 sm:mb-2">
                     <label
@@ -57,7 +66,7 @@ const AddServices = () => {
                         Image
                     </label>
                     <input
-                        placeholder="Enter your image"
+                        placeholder="Enter your image url"
                         required
                         type="text"
                         className="flex-grow w-full h-12 px-4 mb-2 transition duration-200 bg-white border border-gray-300 rounded shadow-sm appearance-none focus:border-deep-purple-accent-400 focus:outline-none focus:shadow-outline"

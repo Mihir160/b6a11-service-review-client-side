@@ -11,6 +11,8 @@ const Register = () => {
         event.preventDefault();
         const form = event.target;
         const name = form.name.value;
+        const photoURL = form.photoURL.value;
+        console.log(photoURL)
         const email = form.email.value;
         const password = form.password.value;
         // console.log(name, email, password)
@@ -20,7 +22,7 @@ const Register = () => {
                 console.log(user)
                 form.reset();
                 setError('')
-                handleUpdateUserProfile(name)
+                handleUpdateUserProfile(name, photoURL)
             })
             .catch(error => {
                 console.error(error)
@@ -29,9 +31,10 @@ const Register = () => {
             })
     }
 
-    const handleUpdateUserProfile = (name) => {
+    const handleUpdateUserProfile = (name, photoURL) => {
         const profile = {
             displayName: name,
+            photoURL: photoURL
            
         }
         updateUserProfile(profile)
@@ -85,6 +88,22 @@ const Register = () => {
                                             className="flex-grow w-full h-12 px-4 mb-2 transition duration-200 bg-white border border-gray-300 rounded shadow-sm appearance-none focus:border-deep-purple-accent-400 focus:outline-none focus:shadow-outline"
 
                                             name="name"
+                                        />
+                                    </div>
+                                    <div className="mb-1 sm:mb-2">
+                                        <label
+                                            htmlFor="email"
+                                            className="inline-block mb-1 font-medium"
+                                        >
+                                            Image
+                                        </label>
+                                        <input
+                                            placeholder="enter your image url"
+                                            required
+                                            type="photoURL"
+                                            className="flex-grow w-full h-12 px-4 mb-2 transition duration-200 bg-white border border-gray-300 rounded shadow-sm appearance-none focus:border-deep-purple-accent-400 focus:outline-none focus:shadow-outline"
+
+                                            name="photoURL"
                                         />
                                     </div>
 

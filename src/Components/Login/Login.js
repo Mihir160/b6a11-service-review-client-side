@@ -14,8 +14,10 @@ const Login = () => {
     const googlProvider = new GoogleAuthProvider()
     const navigate = useNavigate()
     const location = useLocation()
+    console.log(location)
 
     const from = location.state?.from?.pathname || '/';
+   
 
     const handleLogin = event => {
         event.preventDefault();
@@ -27,7 +29,9 @@ const Login = () => {
         login(email, password)
             .then(result => {
                 const user = result.user
+                console.log(user)
                 form.reset()
+                console.log(from)
                 navigate(from, { replace: true })
                 setError('')
             
