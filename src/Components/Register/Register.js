@@ -4,7 +4,7 @@ import { AuthContext } from '../../Context/AuthProvider';
 import useTitle from '../hooks/useTitle';
 
 const Register = () => {
-    const { createUser } = useContext(AuthContext)
+    const { createUser, updateUserProfile  } = useContext(AuthContext)
     const [error, setError] = useState('')
     useTitle('Register')
     const handleSubmit = event => {
@@ -17,14 +17,26 @@ const Register = () => {
         createUser(email, password)
             .then(result => {
                 const user = result.user
+                console.log(user)
                 form.reset();
                 setError('')
+                handleUpdateUserProfile(name)
             })
             .catch(error => {
                 console.error(error)
                 setError(error.message)
 
             })
+    }
+
+    const handleUpdateUserProfile = (name) => {
+        const profile = {
+            displayName: name,
+           
+        }
+        updateUserProfile(profile)
+            .then(() => { })
+            .catch(error => console.error(error))
     }
     return (
         <div className="relative">

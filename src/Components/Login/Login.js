@@ -4,11 +4,13 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider';
 import { FaGoogle } from 'react-icons/fa';
 import useTitle from '../hooks/useTitle';
+
 const Login = () => {
     const { login, googleSignIn } = useContext(AuthContext)
     const [error, setError] = useState('')
     useTitle('login')
 
+  
     const googlProvider = new GoogleAuthProvider()
     const navigate = useNavigate()
     const location = useLocation()
@@ -28,11 +30,13 @@ const Login = () => {
                 form.reset()
                 navigate(from, { replace: true })
                 setError('')
+            
             })
             .catch(error => {
                 setError(error.message)
                 console.error(error)
             })
+         
     }
     
     const handleGoogleSignIn = () => {
