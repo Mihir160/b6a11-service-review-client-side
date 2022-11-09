@@ -17,6 +17,9 @@ const Details = () => {
         const userName = user.displayName
         const userImage = user.photoURL
         const userEmail = user.email
+        const now = new Date();
+        const timeMili = now.getTime();
+        console.log(timeMili)
         // console.log(reviewAdd, userName, userImage, userEmail)
         const review = {
             serviceId: _id,
@@ -24,7 +27,8 @@ const Details = () => {
             name: userName,
             image: userImage,
             email: userEmail,
-            title: title
+            title: title,
+            time: timeMili
 
         }
         fetch('http://localhost:5000/review', {
@@ -54,8 +58,7 @@ const Details = () => {
             .then(data => setsepcificReview(data))
 
     }, [sepcificReview])
-    // console.log(sepcificReview)
-    // console.log(sepcificReview[0].image)
+  
     return (
         <div>
             <div>
@@ -110,6 +113,7 @@ const Details = () => {
             </div>
             {/* review */}
             <div>
+                <h1 className='text-2xl'>Feed Back</h1>
                {
                 sepcificReview.map(reviews => <ServiceReview id={reviews._id} reviews={reviews}></ServiceReview>)
                }

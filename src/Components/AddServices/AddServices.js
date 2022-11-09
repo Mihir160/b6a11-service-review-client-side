@@ -1,6 +1,8 @@
 import React from 'react';
+import useTitle from '../hooks/useTitle';
 
 const AddServices = () => {
+    useTitle('AddService')
     const handleAddServices = event =>{
         event.preventDefault()
         const form = event.target;
@@ -11,7 +13,7 @@ const AddServices = () => {
         const description = form.description.value;
 
         console.log(title, image, price, rating, description)
-
+        
         const addsevices = {
             title ,
             image,

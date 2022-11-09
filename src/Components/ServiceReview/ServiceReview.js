@@ -17,7 +17,7 @@ const ServiceReview = ({reviews}) => {
                           </div>
                           <h6 className="mb-2 font-semibold leading-5">{name}</h6>
                           <p className="text-sm text-gray-900">
-                          {review}
+                          <span className='text-orange-600 font-bold'>Comment :</span> {review}
                           </p>
                       </div> 
                   </div>
