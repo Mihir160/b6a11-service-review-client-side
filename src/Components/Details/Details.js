@@ -7,7 +7,7 @@ import ServiceReview from '../ServiceReview/ServiceReview';
 const Details = () => {
     const { _id, title, image, rating, price, description } = useLoaderData()
     const { user } = useContext(AuthContext)
-    console.log(user)
+    
     useTitle('Details')
 
     const addReview = event => {
@@ -23,7 +23,8 @@ const Details = () => {
             review: reviewAdd,
             name: userName,
             image: userImage,
-            email: userEmail
+            email: userEmail,
+            title: title
 
         }
         fetch('http://localhost:5000/review', {
@@ -35,10 +36,11 @@ const Details = () => {
         })
             .then(res => res.json()
                 .then(data => {
-                    console.log(data)
+                    // console.log(data)
                     if (data.acknowledged) {
                         alert('review placed successfully')
                         form.reset()
+                        // window.location.reload()
                     }
                 }))
             .catch(er => console.error(er))
@@ -51,8 +53,8 @@ const Details = () => {
             .then(res => res.json())
             .then(data => setsepcificReview(data))
 
-    }, [_id])
-    console.log(sepcificReview)
+    }, [sepcificReview])
+    // console.log(sepcificReview)
     // console.log(sepcificReview[0].image)
     return (
         <div>

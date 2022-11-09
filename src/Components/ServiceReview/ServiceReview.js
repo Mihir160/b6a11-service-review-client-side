@@ -3,7 +3,7 @@ import React from 'react';
 
 const ServiceReview = ({reviews}) => {
      const {image, name, review} = reviews
-     console.log(image, name)
+    //  console.log(image, name)
     return (
         <div>
 
