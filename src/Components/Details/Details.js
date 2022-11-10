@@ -4,6 +4,7 @@ import { AuthContext } from '../../Context/AuthProvider';
 import useTitle from '../hooks/useTitle';
 import { FaStar } from 'react-icons/fa';
 import ServiceReview from '../ServiceReview/ServiceReview';
+import Swal from 'sweetalert2';
 const Details = () => {
     const { _id, title, image, rating, price, description } = useLoaderData()
     const { user } = useContext(AuthContext)
@@ -20,7 +21,7 @@ const Details = () => {
         const now = new Date();
         const timeMili = now.getTime();
         console.log(timeMili)
-        // console.log(reviewAdd, userName, userImage, userEmail)
+  
         const review = {
             serviceId: _id,
             review: reviewAdd,
@@ -31,20 +32,24 @@ const Details = () => {
             time: timeMili
 
         }
+        //server pass review data
         fetch('http://localhost:5000/review', {
             method: 'POST',
             headers: {
-                'content-type': 'application/json'
+                'content-type': 'application/json',
+                
             },
             body: JSON.stringify(review)
         })
             .then(res => res.json()
                 .then(data => {
-                    // console.log(data)
+                 
                     if (data.acknowledged) {
-                        alert('review placed successfully')
+                        Swal.fire(
+                            'SuccessFully add review'
+                           )
                         form.reset()
-                        // window.location.reload()
+                      
                     }
                 }))
             .catch(er => console.error(er))
@@ -62,6 +67,7 @@ const Details = () => {
     return (
         <div>
             <div>
+                {/* detail the service */}
                 <div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
                     <div className=" sm:max-w-sm sm:mx-auto lg:max-w-full">
                         <div className="overflow-hidden transition-shadow duration-300 bg-white rounded">
@@ -106,21 +112,18 @@ const Details = () => {
                                 </div>
                             </div>
                         </div>
-
-
                     </div>
                 </div>
             </div>
             {/* review */}
             <div>
-                <h1 className='text-2xl'>Feed Back</h1>
+                <h1 className='text-2xl font-bold text-orange-600'>Feed Back</h1>
                {
                 sepcificReview.map(reviews => <ServiceReview id={reviews._id} reviews={reviews}></ServiceReview>)
                }
             </div>
             <div>
 
-                {/* <Link to='/addReview'><button>Add review</button></Link> */}
                 {
                     user?.email ?
                         <>

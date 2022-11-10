@@ -14,27 +14,25 @@ const MyReview = () => {
                 authorization: `Bearer ${localStorage.getItem('review-token')}`
             }
         })
-            
-            .then(res => {
+         .then(res => {
                 if(res.status === 401 || res.status === 403){
-         
+                
                 }
                return res.json()})
             .then(data => setMyreview(data))
     },
-        [user?.email])
+        [user?.email, logOut])
 
 
     const handleDelete = id => {
         const proceed = window.confirm('Are you sure, you want to cancel this order ')
         if (proceed) {
             fetch(`http://localhost:5000/reviews/${id}`, {
-                method: 'DELETE',
-
+                method: 'DELETE'
             })
                 .then(res => res.json())
                 .then(data => {
-                    // console.log(data)
+                   
                     if (data.deletedCount > 0) {
                         Swal.fire(
                          'SuccessFully delete'

@@ -21,10 +21,12 @@ const AddServices = () => {
             rating,
             description
         }
+        //post add service value
         fetch('http://localhost:5000/servicesAll',{
             method:'POST',
             headers: {
-                'content-type': 'application/json'
+                'content-type': 'application/json', 
+              
             },
             body: JSON.stringify(addsevices)
         })
@@ -132,7 +134,6 @@ const AddServices = () => {
                         Submit
                     </button>
                 </div>
-              
             </form>
         </div>
     );
