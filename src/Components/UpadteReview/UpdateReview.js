@@ -46,6 +46,7 @@ const UpdateReview = () => {
                         <input
                             placeholder="enter your Review"
                             required
+                            defaultValue={update.review}
                             type="text"
                             className="flex-grow w-full h-24 px-4 mb-2 transition duration-200 bg-white border border-gray-300 rounded shadow-sm appearance-none focus:border-deep-purple-accent-400 focus:outline-none focus:shadow-outline"
 

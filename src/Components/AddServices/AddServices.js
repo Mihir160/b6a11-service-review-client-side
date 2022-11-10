@@ -13,7 +13,7 @@ const AddServices = () => {
         const rating = form.rating.value;
         const description = form.description.value;
 
-        console.log(title, image, price, rating, description)
+       
         
         const addsevices = {
             title ,
