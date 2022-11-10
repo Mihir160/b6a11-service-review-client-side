@@ -11,6 +11,7 @@ import Main from "../Components/Main/Main";
 import MyReview from "../Components/MyReview/MyReview";
 import Register from "../Components/Register/Register";
 import ServiceAll from "../Components/Services/ServiceAll";
+import UpdateReview from "../Components/UpdateReview/UpdateReview";
 import PrivateRoute from "./PrivateRoute";
 
 
@@ -54,6 +55,11 @@ const router = createBrowserRouter([
                 {
                     path:'/addservices',
                     element:<AddServices></AddServices>
+                },
+                {
+                    path:'/updatereview/:id',
+                    element:<UpdateReview></UpdateReview>,
+                    loader:({params}) => fetch(`http://localhost:5000/reviews/${params.id}`)
                 }
               
             ]

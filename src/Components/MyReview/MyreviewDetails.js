@@ -1,11 +1,13 @@
 import React from 'react';
 import { FaTrashAlt, FaEdit } from 'react-icons/fa';
-const MyreviewDetails = ({ myreview, handleDelete }) => {
-    console.log(myreview)
-    const { _id, title, review  } = myreview
-
+import { Link } from 'react-router-dom';
+const MyreviewDetails = ({ myreview, handleDelete}) => {
+    // console.log(myreview)
+    const { _id, title, review } = myreview
+  
     return (
         <tr className='text-center'>
+
 
             <td>
                 {title}
@@ -18,9 +20,14 @@ const MyreviewDetails = ({ myreview, handleDelete }) => {
             <th>
                 <label>
                     <button onClick={() => handleDelete(_id)} className='text-orange-600  mr-4'><FaTrashAlt /></button>
-                    <button className='text-orange-600'><FaEdit></FaEdit></button>
+                    <button className='text-orange-600'>
+                        <Link to={`/updatereview/${_id}`}><label htmlFor="my-modal"><FaEdit></FaEdit></label></Link>
+                    </button>
+
                 </label>
             </th>
+
+          
         </tr>
     );
 };

@@ -33,7 +33,9 @@ const MyReview = () => {
             })
            
         }
-    }   
+    } 
+    
+
     return (
         <div>
             <div className=' '>
@@ -54,7 +56,7 @@ const MyReview = () => {
                         <tbody>
 
                             {
-                                myreviews.map(myreview => <MyreviewDetails key={myreview._id} myreview={myreview} handleDelete={handleDelete}></MyreviewDetails>)
+                                myreviews.map(myreview => <MyreviewDetails key={myreview._id} myreview={myreview} handleDelete={handleDelete} ></MyreviewDetails>)
                             }
 
 
