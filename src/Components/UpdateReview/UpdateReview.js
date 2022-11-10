@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 import { useLoaderData, useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 const UpdateReview = () => {
 
     const update = useLoaderData()
@@ -19,7 +20,10 @@ const UpdateReview = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data)
+                // console.log(data)
+                Swal.fire(
+                    'SuccessFully update'
+                   )
                 navigate('/myreview')
             })
             .catch(err => console.error(err))
@@ -29,10 +33,7 @@ const UpdateReview = () => {
 
     return (
         <div className='min-h-screen'>
-           
-
             <div className='lg:p-44'>
-
                 <form onSubmit={handleUpdate} className=''>
                     <div className="mb-1 sm:mb-2">
                         <label
