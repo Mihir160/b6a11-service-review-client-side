@@ -33,7 +33,7 @@ const AddServices = () => {
         })
         .then(res => res.json()
         .then(data => {
-            console.log(data)
+           
             if(data.acknowledged){
                 Swal.fire('Add service placed successfully')
                 form.reset()
