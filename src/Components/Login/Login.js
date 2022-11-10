@@ -4,7 +4,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider';
 import { FaGoogle } from 'react-icons/fa';
 import useTitle from '../hooks/useTitle';
-
+import { TailSpin } from 'react-loader-spinner'
 const Login = () => {
     const { login, googleSignIn } = useContext(AuthContext)
     const [error, setError] = useState('')
@@ -82,10 +82,16 @@ const Login = () => {
     }
 
     if (loading) {
-        return <label htmlFor="">
-          <svg class="animate-spin h-8 w-8 bg-gray-900 mr-3 ..." viewBox="0 0 24 24">
-          </svg>
-      </label>
+        return <TailSpin
+            height="80"
+            width="80"
+            color="#4fa94d"
+            ariaLabel="tail-spin-loading"
+            radius="1"
+            wrapperStyle={{}}
+            wrapperClass=""
+            visible={true}
+        />
     }
     return (
         <div className="relative">

@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider';
 import useTitle from '../hooks/useTitle';
-
+import { TailSpin } from 'react-loader-spinner'
 const Register = () => {
     const { createUser, updateUserProfile  } = useContext(AuthContext)
     const [error, setError] = useState('')
@@ -42,11 +42,18 @@ const Register = () => {
             .then(() => { })
             .catch(error => console.error(error))
     }
+  
     if (loading) {
-        return <label htmlFor="">
-          <svg class="animate-spin h-8 w-8 bg-gray-900 mr-3 ..." viewBox="0 0 24 24">
-          </svg>
-      </label>
+        return <TailSpin
+            height="80"
+            width="80"
+            color="#4fa94d"
+            ariaLabel="tail-spin-loading"
+            radius="1"
+            wrapperStyle={{}}
+            wrapperClass=""
+            visible={true}
+        />
     }
     return (
         <div className="relative">

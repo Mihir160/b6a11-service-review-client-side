@@ -1,17 +1,33 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import useTitle from '../hooks/useTitle';
 import ServiceCard from './ServiceCard';
-
+import { TailSpin } from 'react-loader-spinner'
+import { AuthContext } from '../../Context/AuthProvider';
 const ServiceAll = () => {
     const [services, setServices] = useState([])
     // console.log(services)
+    const {loading} = useContext(AuthContext)
     useTitle('ServiceAll')
     useEffect(() => {
         fetch('https://b6a11-service-review-server-side-five.vercel.app/servicesAll')
             .then(res => res.json())
             .then(data => setServices(data))
+            
+            
 
     }, [])
+    if (loading) {
+        return <TailSpin
+            height="80"
+            width="80"
+            color="#4fa94d"
+            ariaLabel="tail-spin-loading"
+            radius="1"
+            wrapperStyle={{}}
+            wrapperClass=""
+            visible={true}
+        />
+    }
 
     return (
         <div>
