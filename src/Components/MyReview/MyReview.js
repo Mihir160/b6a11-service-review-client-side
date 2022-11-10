@@ -5,12 +5,21 @@ import useTitle from '../hooks/useTitle';
 import MyreviewDetails from './MyreviewDetails';
 
 const MyReview = () => {
-    const { user } = useContext(AuthContext)
+    const { user ,logOut} = useContext(AuthContext)
     const [myreviews, setMyreview] = useState([])
     useTitle('MyReview')
     useEffect(() => {
-        fetch(`http://localhost:5000/reviews?email=${user.email}`)
-            .then(res => res.json())
+        fetch(`http://localhost:5000/reviews?email=${user.email}`,{
+            headers:{
+                authorization: `Bearer ${localStorage.getItem('review-token')}`
+            }
+        })
+            
+            .then(res => {
+                if(res.status === 401 || res.status === 403){
+         
+                }
+               return res.json()})
             .then(data => setMyreview(data))
     },
         [user?.email])

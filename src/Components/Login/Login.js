@@ -14,7 +14,7 @@ const Login = () => {
     const googlProvider = new GoogleAuthProvider()
     const navigate = useNavigate()
     const location = useLocation()
-    console.log(location)
+ 
 
     const from = location.state?.from?.pathname || '/';
    
@@ -29,11 +29,24 @@ const Login = () => {
         login(email, password)
             .then(result => {
                 const user = result.user
-                console.log(user)
+                const currentUser = {
+                    email: user.email
+                }
+                console.log(currentUser)
+                // get jwt token
+                fetch('http://localhost:5000/jwt', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(currentUser)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        localStorage.setItem('review-token', data.token);
+                        navigate(from, { replace: true });
+                    });
                 form.reset()
-                console.log(from)
-                navigate(from, { replace: true })
-                setError('')
             
             })
             .catch(error => {
