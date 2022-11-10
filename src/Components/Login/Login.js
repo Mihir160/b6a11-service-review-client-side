@@ -81,6 +81,7 @@ const Login = () => {
             .catch(error => console.error(error))
     }
 
+if(!error){
     if (loading) {
         return <TailSpin
             height="80"
@@ -93,6 +94,7 @@ const Login = () => {
             visible={true}
         />
     }
+}
     return (
         <div className="relative">
             <img
