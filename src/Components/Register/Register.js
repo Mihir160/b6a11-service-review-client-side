@@ -6,6 +6,7 @@ import useTitle from '../hooks/useTitle';
 const Register = () => {
     const { createUser, updateUserProfile  } = useContext(AuthContext)
     const [error, setError] = useState('')
+    const {loading} = useContext(AuthContext)
     useTitle('Register')
     const handleSubmit = event => {
         event.preventDefault();
@@ -40,6 +41,12 @@ const Register = () => {
         updateUserProfile(profile)
             .then(() => { })
             .catch(error => console.error(error))
+    }
+    if (loading) {
+        return <label htmlFor="">
+          <svg class="animate-spin h-8 w-8 bg-gray-900 mr-3 ..." viewBox="0 0 24 24">
+          </svg>
+      </label>
     }
     return (
         <div className="relative">

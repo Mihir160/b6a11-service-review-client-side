@@ -10,6 +10,7 @@ import Login from "../Components/Login/Login";
 import Main from "../Components/Main/Main";
 import MyReview from "../Components/MyReview/MyReview";
 import Register from "../Components/Register/Register";
+import Service from "../Components/Service/Service";
 import ServiceAll from "../Components/Services/ServiceAll";
 import UpdateReview from "../Components/UpadteReview/UpdateReview";
 import PrivateRoute from "./PrivateRoute";
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
                 {
                     path:'/servicesAll',
                     element:<ServiceAll></ServiceAll>
+                },
+                {
+                    path:'/service',
+                    element:<Service></Service>
                 },
                 {
                     path:'/login',

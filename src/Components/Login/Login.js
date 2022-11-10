@@ -14,7 +14,7 @@ const Login = () => {
     const googlProvider = new GoogleAuthProvider()
     const navigate = useNavigate()
     const location = useLocation()
- 
+    const {loading} = useContext(AuthContext)
 
     const from = location.state?.from?.pathname || '/';
    
@@ -79,6 +79,13 @@ const Login = () => {
                     });
             })
             .catch(error => console.error(error))
+    }
+
+    if (loading) {
+        return <label htmlFor="">
+          <svg class="animate-spin h-8 w-8 bg-gray-900 mr-3 ..." viewBox="0 0 24 24">
+          </svg>
+      </label>
     }
     return (
         <div className="relative">
