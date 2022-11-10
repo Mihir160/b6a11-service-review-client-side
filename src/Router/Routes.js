@@ -11,7 +11,7 @@ import Main from "../Components/Main/Main";
 import MyReview from "../Components/MyReview/MyReview";
 import Register from "../Components/Register/Register";
 import ServiceAll from "../Components/Services/ServiceAll";
-import UpdateReview from "../Components/UpdateReview/UpdateReview";
+import UpdateReview from "../Components/UpadteReview/UpdateReview";
 import PrivateRoute from "./PrivateRoute";
 
 
