@@ -9,7 +9,7 @@ const MyReview = () => {
     const [myreviews, setMyreview] = useState([])
     useTitle('MyReview')
     useEffect(() => {
-        fetch(`http://localhost:5000/reviews?email=${user.email}`,{
+        fetch(`https://b6a11-service-review-server-side-five.vercel.app/reviews?email=${user.email}`,{
             headers:{
                 authorization: `Bearer ${localStorage.getItem('review-token')}`
             }
@@ -27,7 +27,7 @@ const MyReview = () => {
     const handleDelete = id => {
         const proceed = window.confirm('Are you sure, you want to cancel this order ')
         if (proceed) {
-            fetch(`http://localhost:5000/reviews/${id}`, {
+            fetch(`https://b6a11-service-review-server-side-five.vercel.app/reviews/${id}`, {
                 method: 'DELETE'
             })
                 .then(res => res.json())

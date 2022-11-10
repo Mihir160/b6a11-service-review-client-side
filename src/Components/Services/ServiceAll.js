@@ -7,7 +7,7 @@ const ServiceAll = () => {
     // console.log(services)
     useTitle('ServiceAll')
     useEffect(() => {
-        fetch('http://localhost:5000/servicesAll')
+        fetch('https://b6a11-service-review-server-side-five.vercel.app/servicesAll')
             .then(res => res.json())
             .then(data => setServices(data))
 

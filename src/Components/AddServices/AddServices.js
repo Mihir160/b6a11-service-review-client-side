@@ -1,4 +1,5 @@
 import React from 'react';
+import Swal from 'sweetalert2';
 import useTitle from '../hooks/useTitle';
 
 const AddServices = () => {
@@ -22,7 +23,7 @@ const AddServices = () => {
             description
         }
         //post add service value
-        fetch('http://localhost:5000/servicesAll',{
+        fetch('https://b6a11-service-review-server-side-five.vercel.app/servicesAll',{
             method:'POST',
             headers: {
                 'content-type': 'application/json', 
@@ -34,7 +35,7 @@ const AddServices = () => {
         .then(data => {
             console.log(data)
             if(data.acknowledged){
-                alert('Add service placed successfully')
+                Swal.fire('Add service placed successfully')
                 form.reset()
             }
         }))

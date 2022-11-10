@@ -34,7 +34,7 @@ const Login = () => {
                 }
                 console.log(currentUser)
                 // get jwt token
-                fetch('http://localhost:5000/jwt', {
+                fetch('https://b6a11-service-review-server-side-five.vercel.app/jwt', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'
@@ -65,7 +65,7 @@ const Login = () => {
                 }
                 console.log(currentUser)
                 // get jwt token
-                fetch('http://localhost:5000/jwt', {
+                fetch('https://b6a11-service-review-server-side-five.vercel.app/jwt', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'

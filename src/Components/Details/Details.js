@@ -33,7 +33,7 @@ const Details = () => {
 
         }
         //server pass review data
-        fetch('http://localhost:5000/review', {
+        fetch('https://b6a11-service-review-server-side-five.vercel.app/review', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
@@ -58,7 +58,7 @@ const Details = () => {
 
     const [sepcificReview, setsepcificReview] = useState([])
     useEffect(() => {
-        fetch(`http://localhost:5000/review?serviceId=${_id}`)
+        fetch(`https://b6a11-service-review-server-side-five.vercel.app/review?serviceId=${_id}`)
             .then(res => res.json())
             .then(data => setsepcificReview(data))
 
