@@ -64,9 +64,12 @@ const MyReview = () => {
                             </tr>
                         </thead>
                         <tbody>
-
+                        
                             {
+                                myreviews.length > 0 ?
                                 myreviews.map(myreview => <MyreviewDetails key={myreview._id} myreview={myreview} handleDelete={handleDelete} ></MyreviewDetails>)
+                                :
+                                <h2 className='text-2xl font-bold'>No review Found</h2>
                             }
 
 
