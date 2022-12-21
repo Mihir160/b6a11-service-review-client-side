@@ -13,6 +13,7 @@ const Navbar = () => {
          
         <li className='font-semibold'><Link to='/'>Home</Link></li>
         <li className='font-semibold'><Link to='/service'>Service</Link></li>
+        <li className='font-semibold'><Link to='/blog'>Blog</Link></li>
         {
             user?.email ? 
             <>
@@ -25,7 +26,7 @@ const Navbar = () => {
             :
             <li className='font-semibold'><Link to='/login'>Login</Link></li>
         }
-        <li className='font-semibold'><Link to='/blog'>Blog</Link></li>
+  
        
     </>
     return (
